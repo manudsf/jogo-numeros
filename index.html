@@ -1,0 +1,61 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <meta charset="UTF-8">  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>sort</title>  
+<link href=sort.css rel="stylesheet">  
+</head>  
+<body>  
+  <div class="container">  
+    <h3>Eu estou pensando em um número de 1 a 100!</h3>  
+    <br>
+    <h3>Consegue adivinhar?</h3>  
+      <input type="text" placeholder="número" id="guess"><br>  
+      <button onclick="play()" id="my_btn">ADIVINHE</button>  
+      <p id="message1">Nº de tentativas: 0</p>  
+      <p id="message2">Acertos: nenhum</p>  
+      <p id="message3"></p>  
+  </div>  
+
+     <script>
+     var msg1 = document.getElementById("message1")  
+ var msg2 = document.getElementById("message2")  
+ var msg3 = document.getElementById("message3")  
+ var answer = Math.floor(Math.random()*100) + 1;  
+ var no_of_guesses = 0;  
+ var guesses_num = [];  
+ function play(){  
+   var user_guess = document.getElementById("guess").value;  
+   if(user_guess < 1 || user_guess > 100 ){  
+     alert("Não seja bobo! Coloque um número de 1 a 100");  
+   }  
+   else{  
+     guesses_num.push(user_guess);  
+     no_of_guesses+= 1;  
+     if(user_guess < answer){  
+  msg1.textContent = "Você chutou baixo demais!"  
+  msg2.textContent = "Nº de tentativas: " +  
+  no_of_guesses;  
+  msg3.textContent = "Números já tentados: " +  
+  guesses_num;  
+     }  
+     else if(user_guess > answer){  
+       msg1.textContent = "Você chutou alto demais!"  
+       msg2.textContent = "Nº de tentativas:  " +  
+       no_of_guesses;  
+       msg3.textContent = "Números já tentados: " +  
+       guesses_num;  
+     }  
+     else if(user_guess == answer){  
+       msg1.textContent = "YAYY! Você acertou!!"  
+       msg2.textContent = "o número era "  + answer  
+       msg3.textContent = "Você acertou em "  +   no_of_guesses   + " tentativas";   
+     }  
+   }  
+ } 
+      </script>
+
+</body>  
+</html>  
